@@ -1,0 +1,159 @@
+{% include "navbar.html" %}
+
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>Order</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+        integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: rgb(196, 91, 91);
+        }
+
+        .user_card {
+            width: 550px;
+            margin-top: 75px;
+            margin-bottom: auto;
+            background: lightslategrey;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            padding: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 5px;
+
+        }
+
+        .form_container {
+            margin-top: 20px;
+        }
+
+        #form-title {
+            color: #fff;
+        }
+
+        .login_btn {
+            width: 100%;
+            background: #33ccff !important;
+            color: white !important;
+        }
+
+        .login_btn:focus {
+            box-shadow: none !important;
+            outline: 0px !important;
+        }
+
+        .login_container {
+            padding: 0 2rem;
+        }
+
+        .input-group-text {
+            background: #f7ba5b !important;
+            color: white !important;
+            border: 0 !important;
+            border-radius: 0.25rem 0 0 0.25rem !important;
+        }
+
+        .input_user,
+        .input_pass:focus {
+            box-shadow: none !important;
+            outline: 0px !important;
+        }
+    </style>
+
+</head>
+
+<body style="background-color: rgb(196, 91, 91) ;">
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="user_card">
+                <div class="d-flex justify-content-center">
+                    <h3 id="form-title">Your Order</h3>
+                </div>
+                <div class="d-flex justify-content-center form_container">
+
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <input type="hidden" name="username" value="{{request.user}}">
+                        <div class="input-group mb-3">
+                            <div class="input-group-append"></div>
+                            <input required type="text" placeholder="Name you want to order" class="form-control"
+                                name="productnameee"><br />
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-append"></div>
+                            <textarea  id="note" cols="25" rows="5" class="form-control"
+                                placeholder="Note of your order(optional) Example: Happy Birthday" name="note"></textarea><br />
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-append"></div>
+                            <label for="quantity" style="color: #fff;">Quantity</label>
+                            <select name="quantity" placeholder="Quantity">
+                                <option value='1'>1</option>
+                                <option value='2'>2</option>
+                                <option value='3'>3</option>
+                                <option value='4'>4</option>
+                                <option value='4'>5</option>
+                             </select>
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-append"></div>
+                            <input type="text" placeholder="Address" class="form-control" name="address"><br />
+
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-append"></div>
+                            <input type="text" placeholder="Fullname" class="form-control"
+                                name="fullname"><br />
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-append"></div>
+                            <textarea  id="detailaddress" cols="25" rows="10" class="form-control"
+                                placeholder="Detail Address Direction(optional)" name="detailaddress"></textarea><br />
+
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-append"></div>
+                            <input required type="text"  placeholder="Number" class="form-control"
+                                name="number"><br />
+
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-append"></div>
+                            <input type="text"  placeholder="Alt Phone number" class="form-control"
+                                name="altnum"><br />
+
+                        </div>
+                        <h5 id="form-title">Delivery Date and Time</h5>
+                        <div class="input-group mb-2">
+                            <div class="input-group-append"></div>
+                            <input type="date" class="form-control" name="date"><input type="time" class="form-control"
+                                name="time">
+                        </div>
+                        <h5 id="form-title">Payment method:Cash on Delivery</h5>
+                        <div class="d-flex justify-content-center mt-3 login_container">
+                            <input class="btn login_btn" type="submit" value="Order Now">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+{% include "footer.html" %}
