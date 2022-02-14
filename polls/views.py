@@ -81,6 +81,9 @@ def logoutUser(request):
 def location(request):
     return render(request, 'location.html')
 
+# def chartdata(request):
+#     return render(request, 'chartdata.html')
+
 
 @login_required(login_url='login')
 def order(request):

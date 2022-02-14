@@ -10,6 +10,8 @@ urlpatterns = [
     path('location/',views.location,name='location'),
     path('menu/',views.menulistt,name='menulistt'),
     path('order/',views.order,name='order'),
+    # path('chartdata/',views.chartdata,name='chartdata'),
+
    
 
 ]
